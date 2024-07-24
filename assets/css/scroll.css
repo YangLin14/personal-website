@@ -1,0 +1,21 @@
+.wrapper2 {
+  height: 600px;
+  display: flex;
+  overflow-x: auto;
+  border-radius: 5px; /* Curving the corners of the frame */
+  background-color: #3d4051; /* Adding a background color for the frame */
+  align-items: center; /* Centering the images in y direction */
+}
+
+.wrapper2 .item {
+  min-width: auto;
+  height: 600px;
+  line-height: normal;
+  text-align: center;
+  margin-right: 5px;
+}
+
+.wrapper2 .item img {
+  max-width: auto;
+  height: 100%;
+}
