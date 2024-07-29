@@ -4280,11 +4280,13 @@ body.is-preload #banner p {
   }
 }
 .profile-pic {
+  margin: 0 0 1em 0 !important;
   width: 400px;
   transition: width 0.3s ease;
 }
 @media (max-width: 600px) {
   .profile-pic {
+    margin: 0 0 1em 0 !important;
     width: 100%;
   }
 }
