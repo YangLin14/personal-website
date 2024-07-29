@@ -395,7 +395,7 @@
           <p>
             Feel free to reach out to me with the following contact information.
           </p>
-          <form method="post" action="#">
+          <form method="post" action="#" onsubmit="event.preventDefault(); showConfetti();">
             <div class="fields">
               <div class="field">
                 <label for="name">Name</label>
@@ -414,6 +414,48 @@
               <li><input type="submit" value="Send Message" /></li>
             </ul>
           </form>
+
+          <script>
+            function showConfetti() {
+              const colors = ['#ff0a54', '#ff477e', '#ff7096', '#ff85a1', '#fbb1bd', '#f9bec7', '#f7cad0', '#fae0e4'];
+              const confettiContainer = document.createElement('div');
+              confettiContainer.style.position = 'fixed';
+              confettiContainer.style.top = '0';
+              confettiContainer.style.left = '0';
+              confettiContainer.style.width = '100%';
+              confettiContainer.style.height = '100%';
+              confettiContainer.style.pointerEvents = 'none';
+              confettiContainer.style.zIndex = '9999';
+              document.body.appendChild(confettiContainer);
+
+              for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.top = Math.random() * 100 + '%';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.opacity = Math.random();
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                confettiContainer.appendChild(confetti);
+
+                confetti.animate([
+                  { transform: `translateY(0) rotate(${Math.random() * 360}deg)` },
+                  { transform: `translateY(100vh) rotate(${Math.random() * 360}deg)` }
+                ], {
+                  duration: Math.random() * 3000 + 2000,
+                  easing: 'ease-out',
+                  iterations: 1,
+                  fill: 'forwards'
+                });
+              }
+
+              setTimeout(() => {
+                document.body.removeChild(confettiContainer);
+              }, 5000);
+            }
+          </script>
           <ul class="contact">
             <li class="icon solid fa-home">
               University of California San Diego<br />
