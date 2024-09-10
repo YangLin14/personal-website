@@ -111,16 +111,22 @@
 
             <section class="features">
               <article>
-                <a href="#" class="image"
-                  ><img src="images/frugalpic02.png" alt=""
-                /></a>
+                <a href="#" class="image lightbox-trigger">
+                  <img src="images/frugalpic02.png" alt="" />
+                </a>
               </article>
               <article>
-                <a href="#" class="image"
-                  ><img src="images/frugalpic03.png" alt=""
-                /></a>
+                <a href="#" class="image lightbox-trigger">
+                  <img src="images/frugalpic03.png" alt="" />
+                </a>
               </article>
             </section>
+
+            <!-- Lightbox -->
+            <div id="lightbox" class="lightbox">
+              <span class="close-lightbox">&times;</span>
+              <img id="lightbox-img" src="" alt="Lightbox Image" />
+            </div>
           </div>
         </div>
       </section>
@@ -148,5 +154,32 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script>
+      // Lightbox functionality
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const closeLightbox = document.querySelector(".close-lightbox");
+      const lightboxTriggers = document.querySelectorAll(".lightbox-trigger");
+
+      lightboxTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", (e) => {
+          e.preventDefault();
+          const imgSrc = trigger.querySelector("img").src;
+          lightboxImg.src = imgSrc;
+          lightbox.style.display = "block";
+        });
+      });
+
+      closeLightbox.addEventListener("click", () => {
+        lightbox.style.display = "none";
+      });
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.style.display = "none";
+        }
+      });
+    </script>
   </body>
 </html>
